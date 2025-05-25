@@ -5,10 +5,14 @@ import os
 
 app = Flask(__name__)
 
-r= redis.Redis(host=os.getenv("REDIS_HOST", "localhost"), port=6379, db=0, decode_responses=True) 
+r = redis.Redis(host=os.getenv("REDIS_HOST", "localhost"), port=6379, db=0, decode_responses=True) 
 
 def generate_short_id(num_of_chars: int) -> str:
     return ''.join(random.choices(string.ascii_letters + string.digits, k=num_of_chars))
+
+@app.route('/')
+def home():
+    return "Hello, David!"
 
 @app.route('/shorten', methods=['POST'])
 def shorten_url():

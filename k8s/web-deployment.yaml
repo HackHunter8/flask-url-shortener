@@ -1,4 +1,4 @@
-# flask-deployment.yaml
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,12 +15,9 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: hackhunter8/flask-url-shortener:latest
+          image: dockerdevopscloud/flask-url-shortener:latest
           ports:
             - containerPort: 5000
-          env:
-            - name: REDIS_HOST
-              value: "redis"
 ---
 apiVersion: v1
 kind: Service
